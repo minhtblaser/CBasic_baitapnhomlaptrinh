@@ -1,8 +1,6 @@
 #include<stdio.h>
 //  #include "Datetime.h"
 //  #include "Student.h"
-#include "Students.h"
-#include "Checker.cpp"
 //chay nhieu loi vai
 
 void enter(Datetime &current);
