@@ -99,7 +99,7 @@ int main(){
    printf("nhap so hang m = "); scanf("%d",&m);
    printf("nhap vao ma tran:\n");
    NhapMaTran(a, m , n);
-   XuatMaTran(a, m, n);
+   XuatMaTran(a, m, n);dwdwdwdưddwdeew
    printf("\nthe max number in matrix is %d", Max(a,n,m));
    printf("\nthe min number in matrix is %d", Min(a,n,m));
    findpositionOfMin(a,n,m);
