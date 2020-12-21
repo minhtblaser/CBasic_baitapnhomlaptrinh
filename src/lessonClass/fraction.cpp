@@ -1,25 +1,27 @@
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
+enum CompareResult{
+    LARGER  = 1, EQUAL = 0, SMALLER = -1
+};
 typedef struct Fraction {
-    int numerator, denominator, fraction1, fraction2;
+    int numerator, denominator;
 };
 int UCLN (int a, int b);
 int BCNN (int a, int b);
 void printValue(Fraction a);
-void printResult(Fraction a, Fraction b);
+void printCompareResult(Fraction a, Fraction b);
+void enter(Fraction &input);
 Fraction compact (Fraction a);
 Fraction plus(Fraction a, Fraction b);
 Fraction minus(Fraction a, Fraction b);
 Fraction multi(Fraction a, Fraction b);
 Fraction divide(Fraction a, Fraction b);
-int compare(Fraction a, Fraction b);
+CompareResult compare(Fraction a, Fraction b);
 int main(){
     Fraction a,b,c;
-    printf("\nenter number fraction 1: ");
-    scanf("%d%d", &a.numerator, &a.denominator);
-    printf("\nenter number fraction 2: ");
-    scanf("%d%d", &b.numerator, &b.denominator);
+    enter(a);
+    enter(b);
     printf("\nthe number fraction 1 after compact is ");
     a = compact(a);
     printValue(a);
@@ -39,7 +41,7 @@ int main(){
     c = divide(a,b);
     printValue(c);
     printf("\nThe compare of fraction 1 and fraction 2 is: ");
-    printResult(a,b);
+    printCompareResult(a,b);
     return 0;
 }
 int UCLN (int a, int b){
@@ -67,46 +69,50 @@ Fraction plus(Fraction a, Fraction b){
     Fraction c;
     c.numerator = a.numerator*b.denominator + b.numerator*a.denominator;
     c.denominator = a.denominator * b.denominator;
-    c = compact(c);
     return c;
 }
 Fraction minus(Fraction a, Fraction b){
     Fraction c;
     c.numerator = (a.numerator * b.denominator) - (b.numerator * a.denominator);
     c.denominator = a.denominator * b.denominator;
-    c = compact(c);
     return c;
 }
 Fraction multi(Fraction a, Fraction b){
     Fraction c;
     c.numerator = a.numerator*b.numerator;
     c.denominator = a.denominator*b.denominator;
-    c = compact(c);
     return c;
 }
 Fraction divide(Fraction a, Fraction b){
     Fraction c;
     c.numerator = a.numerator * b.denominator;
     c.denominator = a.denominator * b.numerator;
-    c = compact(c);
     return c;
 }
 void printValue(Fraction a){
+    a = compact(a);
     printf("%d/%d", a.numerator, a.denominator);
 }
-int compare(Fraction a, Fraction b){
-    Fraction c;
-    c.fraction1 = a.numerator / a.denominator;
-    c.fraction2 = b.numerator / b.denominator;
-    if (c.fraction1 > c.fraction2){
-        return 1;
-    } else if (c.fraction1 == c.fraction2){
-        return 0;
+CompareResult compare(Fraction a, Fraction b){
+    CompareResult result = EQUAL;
+    if (a.numerator * b.denominator > a.denominator * b.numerator){
+        result = LARGER;
+    } else if (a.numerator * b.denominator < a.denominator * b.numerator){
+        result = SMALLER;
+    }
+    return result;
+}
+void printCompareResult(Fraction a, Fraction b){
+    CompareResult  result = compare(a,b);
+    if(result == LARGER){
+        printf("fraction 1 > fraction 2");
+    } else if (result == SMALLER){
+        printf("fraction 1 < fraction 2");
     } else {
-        return -1;
+        printf("fraction 1 = fraction 2");
     }
 }
-void printResult(Fraction a, Fraction b){
-    int  result = compare(a,b);
-    printf("%d", result);
+void enter(Fraction &input){
+    printf("\nenter number fraction : ");
+    scanf("%d%d", &input.numerator, &input.denominator);
 }
