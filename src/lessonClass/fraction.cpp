@@ -116,3 +116,4 @@ void enter(Fraction &input){
     printf("\nenter number fraction : ");
     scanf("%d%d", &input.numerator, &input.denominator);
 }
+// da okie anh 
