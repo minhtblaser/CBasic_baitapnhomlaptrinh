@@ -1,8 +1,12 @@
 #include<stdio.h>
 //  #include "Datetime.h"
 //  #include "Student.h"
+<<<<<<< HEAD
 #include "Students.h"
 #include "Checker.cpp"
+=======
+//chay nhieu loi vai
+>>>>>>> 26e31275059d23dfe0bb995ed2b9edefb8c94b87
 
 void enter(Datetime &current);
 void enter(Student &input);
