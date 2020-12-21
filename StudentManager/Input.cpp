@@ -3,7 +3,6 @@
 //  #include "Student.h"
 #include "Students.h"
 #include "Checker.cpp"
-//chay nhieu loi vai
 
 void enter(Datetime &current);
 void enter(Student &input);
