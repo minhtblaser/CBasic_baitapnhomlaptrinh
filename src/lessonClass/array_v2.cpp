@@ -18,11 +18,11 @@ int main(){
 void enter(Array &input){
     int temp;
     printf("Enter the size of array: ");
-    scanf("%d", &input.size); // okie anh ^^
+    scanf("%d", &input.size); 
     for(int index = 0; index < input.size; index++){
         printf("enter number a[%d]: ",index);
         scanf("%d", &temp);
-        input.numbers[index] = temp;//doan loi 
+        input.numbers[index] = temp;
     }
 }
 void printValue(Array output){
@@ -46,4 +46,3 @@ void printEvenNumbers(Array source){
     printf("\nyour result: ");
     printValue(even_numbers);
 }
-//hoi lag okie ///hoi hieu 
