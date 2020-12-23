@@ -7,7 +7,9 @@ typedef struct Array{
 void enter(Array &input);
 void printValue(Array output);
 void printEvenNumbers(Array source);
+void printPrimeNumber(Array source);
 Array findEvenNumbers(Array source);
+Array findPrimeNumbers(Array source);
 int main(){
     Array list;
     enter(list);
@@ -45,4 +47,25 @@ void printEvenNumbers(Array source){
     Array even_numbers = findEvenNumbers(source);
     printf("\nyour result: ");
     printValue(even_numbers);
+}
+// -------
+bool findPrimeNumbers(Array source){
+    Array prime_numbers;
+    prime_numbers.size = 0;
+    for(int index = 0; index < source.size; index++){
+        if(source.numbers[index] % index ==0){
+            prime_numbers.size++;
+        }
+    }
+    if(prime_numbers.size == 0){
+        return true;
+    } else{
+        return false;
+    }
+}
+void printPrimeNumber(Array source){
+    if (findPrimeNumbers(source)){
+        printf("\nthe prime numbers in array: ");
+        printValue(findPrimeNumbers(source));
+    }
 }
